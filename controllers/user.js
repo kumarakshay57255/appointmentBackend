@@ -23,3 +23,13 @@ exports.getUser  = async (req,res)=>{
           res.status(500).json({error:err});
     }
 }
+
+exports.deleteUser = async (req,res)=>{
+    try {
+         const {id} = req.params;
+          User.destroy({where:{id}});
+          return res.status(200).json({msg:'User deleted Successfully'});
+    } catch (err) {
+        res.status(500).json({error:err})
+    }
+}
